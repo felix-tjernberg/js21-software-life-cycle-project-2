@@ -30,6 +30,7 @@ async function Home() {
                     Här kommer vi ha ett form där man kan lägga till fler
                     prinsessor
                 </p>
+                <button className={classes.addButton}>Add Brincess</button>
             </aside>
             <section className={classes.main}>
                 {princesses.map((princess, index) => {

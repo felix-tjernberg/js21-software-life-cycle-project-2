@@ -29,3 +29,17 @@
     left: 0%;
     top: 0%;
 }
+
+.addButton {
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 24px;
+    padding: 8px;
+    background-color: #FF75AD;
+    box-shadow: 0 4px 4px rgb(0 0 0 / 0.25);
+
+}
+
+.addButton:hover {
+}
