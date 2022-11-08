@@ -2,13 +2,6 @@ import classes from '../styles/Home.module.css'
 import Princess from './Princess'
 
 async function Home() {
-    const princesses = [
-        { name: 'cinderella', color: 'blue' },
-        { name: 'snövit', color: 'green' },
-        { name: 'törnrosa', color: 'red' },
-        { name: 'rapunzel', color: 'orange' },
-        { name: 'elsa', color: 'white' }
-    ]
     // async function Home(req, res) {
     //     const graphqlresponse = await fetch(
     //         'https://graphqllearning1.azurewebsites.net',
@@ -18,11 +11,56 @@ async function Home() {
     //                 Accept: 'application/json'
     //             },
     //             method: 'POST',
-    //             body: JSON.stringify({ query: '{hello}' })
+    //             body: JSON.stringify({
+    //                 query: `{
+    //                 brincesses {
+    //                   name,
+    //                   backgroundColor {string, imgSrc},
+    //                   hair {style, color {string imgSrc} }
+    //                   eyes {right {string imgSrc} left {string imgSrc} }
+    //                   mouth {up {string imgSrc} down {string imgSrc} }
+    //                 }
+    //               }`
+    //             })
     //         }
     //     )
     //     const json = await graphqlresponse.json()
-    //     res.status(200).json(json)
+    // console.log(json[0].backgroundColor.string)
+    // console.log(json.data.brincesses[0])
+    // res.status(200).json(json)
+
+    const brincesses = [
+        {
+            name: 'Brincess 1',
+            backgroundColor: {
+                string: '#7F0',
+                imgSrc: 'https://i.imgur.com/0F0.png'
+            },
+            hair: { style: 'long', color: { string: '#6F0', imgSrc: null } },
+            eyes: {
+                right: { string: '#0F0', imgSrc: null },
+                left: { string: '#000', imgSrc: null }
+            },
+            mouth: {
+                up: { string: '#4F0', imgSrc: null },
+                down: { string: '#500', imgSrc: null }
+            }
+        },
+        {
+            name: 'Brincess 2',
+            backgroundColor: { string: '#3F0', imgSrc: null },
+            hair: { style: 'short', color: { string: '#2F0', imgSrc: null } },
+            eyes: {
+                right: { string: '#0F0', imgSrc: null },
+                left: { string: '#000', imgSrc: null }
+            },
+            mouth: {
+                up: { string: '#1F0', imgSrc: null },
+                down: { string: '#100', imgSrc: null }
+            }
+        }
+    ]
+
     return (
         <section className={classes.container}>
             <aside className={classes.sidebar}>
@@ -33,7 +71,7 @@ async function Home() {
                 <button className={classes.addButton}>Add Brincess</button>
             </aside>
             <section className={classes.main}>
-                {princesses.map((princess, index) => {
+                {brincesses.map((princess, index) => {
                     return <Princess key={index} princess={princess} />
                 })}
             </section>

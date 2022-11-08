@@ -2,8 +2,8 @@ import Link from 'next/link'
 
 import classes from '../styles/Home.module.css'
 function Princess({ princess }) {
-    console.log(princess, 'test')
-    const { name, color } = princess
+    // console.log(princess)
+    const { name, backgroundColor } = princess
     return (
         <div className={classes.test}>
             <Link href={`/${name}`}>
@@ -14,7 +14,12 @@ function Princess({ princess }) {
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg">
                     {/* background */}
-                    <circle cx="72" cy="72" r="72" fill={color} />
+                    <circle
+                        cx="72"
+                        cy="72"
+                        r="72"
+                        fill={backgroundColor.string}
+                    />
                     {/* body */}
                     <path
                         d="M107 121C107 142.539 91.7777 138 73 138C54.2223 138 39 142.539 39 121C39 99.4609 54.2223 82 73 82C91.7777 82 107 99.4609 107 121Z"
