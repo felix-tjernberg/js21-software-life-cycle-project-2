@@ -15,12 +15,21 @@ a {
     box-sizing: border-box;
 }
 
+:root {
+    --main1: #cdb4db;
+    --main2: #bde0fe;
+    --main3: #ffc8dd;
+    --main4: #a2d2ff;
+    --main5: #ffafcc;
+    --dark-text: #0e0116;
+}
+
 @media (prefers-color-scheme: dark) {
     html {
         color-scheme: dark;
     }
     body {
-        color: white;
+        color: #f6f3f7;
         background: black;
     }
 }

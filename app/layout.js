@@ -1,5 +1,7 @@
 import './globals.css'
+import '../components/ConsentPopUp.module.css'
 import MainFooter from '../components/MainFooter'
+import ConsentPopUp from '../components/ConsentPopUp'
 
 export default function RootLayout({ children }) {
     return (
@@ -18,6 +20,7 @@ export default function RootLayout({ children }) {
                 <footer>
                     <MainFooter />
                 </footer>
+                <ConsentPopUp />
             </body>
         </html>
     )
