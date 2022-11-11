@@ -1,0 +1,89 @@
+.princess-card {
+    background-color: var(--main7);
+    border: 10px solid;
+    border-image-source: linear-gradient(
+        145deg,
+        #bf952f,
+        #fcf5ba,
+        #bf952f,
+        #fbf6b7,
+        #aa871c
+    );
+    border-image-slice: 1;
+    border-radius: 5px;
+    position: relative;
+    margin: 0 0 -144px 0;
+    transition: 0.5s;
+    width: 200px;
+    padding: 5px;
+    -webkit-box-shadow: -2px 2px 10px 5px black;
+    box-shadow: -2px 2px 10px 5px black;
+}
+
+.princess-card:nth-child(even) {
+    margin: 0 3px -144px 0;
+}
+
+.princess-card:nth-child(5n) {
+    margin: 0 0 -144px 5px;
+}
+
+.princess-card:hover {
+    margin: 0;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header h1,
+.header h2 {
+    margin: 0;
+}
+
+.card-icon {
+    margin: 10px auto 0 auto;
+    width: 100%;
+}
+
+.card-text p span {
+    font-size: 9px;
+    font-weight: 900;
+}
+
+.card-text p {
+    border-block-start: 1px solid;
+    border-image-slice: 1;
+    border-image-source: linear-gradient(
+        145deg,
+        #bf952f,
+        #fcf5ba,
+        #bf952f,
+        #fbf6b7,
+        #aa871c
+    );
+    font-size: 8px;
+    padding: 2px;
+}
+
+@media (min-width: 1366px) {
+    .princess-card {
+        margin: 0 -72px 0 0;
+    }
+    .princess-card:nth-child(even) {
+        margin: -2px -72px 0 0;
+    }
+
+    .princess-card:nth-child(5n) {
+        margin: 2px -72px 0 0;
+    }
+
+    .princess-card:hover {
+        margin: 0;
+    }
+
+    .princess-card:nth-child(5n):hover {
+        margin: 0 -72px 0 0;
+    }
+}

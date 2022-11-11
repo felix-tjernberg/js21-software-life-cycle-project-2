@@ -1,33 +1,28 @@
 .container {
     display: flex;
+    flex-direction: column;
 }
+
 .main {
+    background-color: white;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    width: 100%;
+}
+.princesses-container {
+    align-items: center;
     background-color: darkblue;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
     min-height: 100vh;
     width: 100%;
-    display: flex;
 }
 
 .sidebar {
     background-color: blueviolet;
     min-height: 100vh;
-    width: 200px;
-}
-
-.test {
-    height: 144px;
-    position: relative;
-    width: 144px;
-}
-
-.test:hover {
-    background-color: black;
-}
-
-.testImg {
-    position: absolute;
-    left: 0%;
-    top: 0%;
 }
 
 .addButton {
@@ -36,10 +31,27 @@
     color: white;
     font-size: 24px;
     padding: 8px;
-    background-color: #FF75AD;
+    background-color: #ff75ad;
     box-shadow: 0 4px 4px rgb(0 0 0 / 0.25);
-
 }
 
-.addButton:hover {
+@media (min-width: 1366px) {
+    .container {
+        flex-direction: row;
+    }
+
+    .sidebar {
+        background-color: blueviolet;
+        min-height: 100vh;
+        width: 200px;
+    }
+
+    .princesses-container {
+        align-items: flex-start;
+        background-color: darkblue;
+        flex-direction: row;
+        flex-wrap: wrap;
+        max-width: 750px;
+        min-height: 100vh;
+    }
 }
