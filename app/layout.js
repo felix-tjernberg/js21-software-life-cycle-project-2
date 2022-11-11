@@ -1,7 +1,8 @@
-import './globals.css'
+import '../styles/globals.css'
 import '../components/ConsentPopUp.module.css'
 import MainFooter from '../components/MainFooter'
 import ConsentPopUp from '../components/ConsentPopUp'
+import CookiesProvider from './cookies'
 
 export default function RootLayout({ children }) {
     return (
@@ -14,14 +15,16 @@ export default function RootLayout({ children }) {
                 />
                 <link rel="icon" href="/favicon.ico" />
             </head>
-            <body>
-                <header></header>
-                <main>{children}</main>
-                <footer>
-                    <MainFooter />
-                </footer>
-                <ConsentPopUp />
-            </body>
+            <CookiesProvider>
+                <body>
+                    <header></header>
+                    <main>{children}</main>
+                    <footer>
+                        <MainFooter />
+                    </footer>
+                    <ConsentPopUp />
+                </body>
+            </CookiesProvider>
         </html>
     )
 }

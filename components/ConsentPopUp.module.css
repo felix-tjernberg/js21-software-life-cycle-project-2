@@ -8,7 +8,6 @@
     align-items: center;
     display: flex;
     justify-content: center;
-    /* margin: auto; */
     width: 100%;
 }
 
@@ -21,11 +20,12 @@
     color: black;
     left: 50%;
     max-width: 500px;
-    padding: 24px;
+    padding: 16px 8px 16px 8px;
     position: fixed;
     top: 50%;
     text-align: center;
     transform: translate(-50%, -50%);
+    width: 90%;
 }
 
 .consent-btn {
@@ -41,4 +41,10 @@
 
 .consent-btn:active {
     transform: translateY(4px);
+}
+
+@media (min-width: 1366px) {
+    .modal {
+        padding: 24px;
+    }
 }
