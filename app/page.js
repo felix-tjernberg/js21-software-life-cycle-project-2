@@ -1,18 +1,20 @@
 import classes from '../styles/Home.module.css'
 import Princess from './Princess'
+import PrincessForm from '../components/PrincessForm'
+import '../public/bp-logo.png'
 
 async function Home() {
     // async function Home(req, res) {
-    //     const graphqlresponse = await fetch(
-    //         'https://graphqllearning1.azurewebsites.net',
-    //         {
-    //             headers: {
-    //                 'Content-Type': 'application/json',
-    //                 Accept: 'application/json'
-    //             },
-    //             method: 'POST',
-    //             body: JSON.stringify({
-    //                 query: `{
+    // const graphqlresponse = await fetch(
+    //     'https://graphqllearning1.azurewebsites.net',
+    //     {
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //             Accept: 'application/json'
+    //         },
+    //         method: 'POST',
+    //         body: JSON.stringify({
+    //             query: `{
     //                 brincesses {
     //                   name,
     //                   backgroundColor {string, imgSrc},
@@ -21,10 +23,10 @@ async function Home() {
     //                   mouth {up {string imgSrc} down {string imgSrc} }
     //                 }
     //               }`
-    //             })
-    //         }
-    //     )
-    //     const json = await graphqlresponse.json()
+    //         })
+    //     }
+    // )
+    // const json = await graphqlresponse.json()
     // console.log(json[0].backgroundColor.string)
     // console.log(json.data.brincesses[0])
     // res.status(200).json(json)
@@ -64,11 +66,12 @@ async function Home() {
     return (
         <section className={classes.container}>
             <aside className={classes.sidebar}>
-                <p>
-                    Här kommer vi ha ett form där man kan lägga till fler
-                    prinsessor
-                </p>
-                <button className={classes.addButton}>Add Brincess</button>
+                <img
+                    className={classes['bp-logo']}
+                    src={'bp-logo.png'}
+                    alt="brincess-puldlling-logo"
+                />
+                <PrincessForm />
             </aside>
             <section className={classes.main}>
                 {brincesses.map((princess, index) => {

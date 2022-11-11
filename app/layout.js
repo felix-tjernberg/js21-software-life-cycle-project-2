@@ -1,5 +1,7 @@
 import './globals.css'
 import MainFooter from '../components/MainFooter'
+import PrincessForm from '../components/PrincessForm'
+import '../components/PrincessForm.module.css'
 
 export default function RootLayout({ children }) {
     return (
