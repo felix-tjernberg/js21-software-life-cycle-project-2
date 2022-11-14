@@ -1,5 +1,5 @@
 import '../styles/globals.css'
-import '../components/ConsentPopUp.module.css'
+// import '../components/ConsentPopUp.module.css'
 import MainFooter from '../components/MainFooter'
 import PrincessForm from '../components/PrincessForm'
 import '../components/PrincessForm.module.css'

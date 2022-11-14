@@ -10,13 +10,12 @@ function ConsentPopUp() {
     const [consent, setConsent] = useState(false)
     const [cookies, setCookie] = useCookies(['name'])
 
-    function clickHandler() {
-        setConsent(true)
+    function clickHandler(e) {
+        setConsent(e.target.value)
     }
 
     useEffect(() => {
         const date = new Date()
-
         // sets d = now + 5000 ms
         date.setTime(date.getTime() + 5000)
         if (consent) {
@@ -25,12 +24,17 @@ function ConsentPopUp() {
                 path: '/',
                 sameSite: true
             })
+            localStorage.setItem('authorId', crypto.randomUUID())
+            localStorage.setItem('consent', true)
         }
     }, [consent])
 
+    // släng in en kaka i local storage
+    // hämta kakan
+
     return (
         <>
-            {consent ? (
+            {localStorage.getItem('consent') || consent ? (
                 <></>
             ) : (
                 <aside className={classes.overlay}>
@@ -48,13 +52,15 @@ function ConsentPopUp() {
                         <button
                             onClick={clickHandler}
                             className={classes['consent-btn']}
-                            style={{ marginRight: '2px' }}>
+                            style={{ marginRight: '2px' }}
+                            value={true}>
                             Accept all cakes
                         </button>
                         <button
                             onClick={clickHandler}
                             className={classes['consent-btn']}
-                            style={{ marginLeft: '2px' }}>
+                            style={{ marginLeft: '2px' }}
+                            value={false}>
                             Refuse all cakes
                         </button>
                     </div>
