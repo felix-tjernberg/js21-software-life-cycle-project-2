@@ -8,6 +8,7 @@ import { useCookies } from 'react-cookie'
 
 function ConsentPopUp() {
     const [consent, setConsent] = useState(false)
+    const [item, setItem] = useState(false)
     const [cookies, setCookie] = useCookies(['name'])
 
     function clickHandler(e) {
@@ -16,25 +17,30 @@ function ConsentPopUp() {
 
     useEffect(() => {
         const date = new Date()
-        // sets d = now + 5000 ms
-        date.setTime(date.getTime() + 5000)
-        if (consent) {
+        // sets d = now + 20 min
+        date.setTime(date.getTime() + 1200000)
+        console.log('consent: ', typeof consent)
+        if (consent === 'true') {
             setCookie('name', 'test', {
                 expires: date,
                 path: '/',
                 sameSite: true
             })
-            localStorage.setItem('authorId', crypto.randomUUID())
-            localStorage.setItem('consent', true)
+
+            console.log('consent i if-stats: ', consent)
+            localStorage?.setItem('authorId', crypto.randomUUID())
+            localStorage?.setItem('consent', true)
         }
     }, [consent])
 
-    // släng in en kaka i local storage
-    // hämta kakan
+    // used to avoid "ReferenceError: localStorage is not defined"
+    useEffect(() => {
+        setItem(localStorage.getItem('consent'))
+    }, [])
 
     return (
         <>
-            {localStorage.getItem('consent') || consent ? (
+            {item || consent ? (
                 <></>
             ) : (
                 <aside className={classes.overlay}>
