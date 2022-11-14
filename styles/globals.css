@@ -32,6 +32,6 @@ a {
     }
     body {
         color: #f6f3f7;
-        background: black;
+        background: var(--main6);
     }
 }

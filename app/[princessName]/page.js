@@ -1,6 +1,9 @@
+// 'use client'
+
 import classes from '../../styles/Princess.module.css'
 import Princesses from '../Princesses'
 import Link from 'next/link'
+
 function PrincessName(p) {
     const brincesses = [
         {
@@ -86,27 +89,26 @@ function PrincessName(p) {
     ]
 
     const brincess = brincesses?.find((brincess) => {
-        // console.log(
-        //     'brincess?.name: ',
-        //     brincess?.name,
-        //     '=== p.params.princessName',
-        //     p.params.princessName
-        // )
         if (brincess?.name === p.params.princessName) return brincess
     })
 
     return (
-        <section className={classes['edit-princess']}>
-            <h1>
-                (param → ) {p.params.princessName} (brincess → ){' '}
-                {brincess?.name}
-            </h1>
-            <section className={classes.main}>
-                <div className={classes['princesses-container']}>
-                    {<Princesses princess={brincess} />}
-                </div>
+        <section className={classes['edit-container']}>
+            <aside className={classes['edit-princess']}>
+                <h1>Edit thy Brincess</h1>
+            </aside>
+            <section className={classes['princess-section']}>
+                <h1>
+                    (param → ) {p.params.princessName} (brincess → ){' '}
+                    {brincess?.name}
+                </h1>
+                <section className={classes.main}>
+                    <div className={classes['princesses-container']}>
+                        {<Princesses princess={brincess} />}
+                    </div>
+                </section>
+                <Link href={'/'}>Go back</Link>
             </section>
-            <Link href={'/'}>Go back</Link>
         </section>
     )
 }

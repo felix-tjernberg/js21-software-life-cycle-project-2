@@ -21,13 +21,11 @@ function ConsentPopUp() {
         date.setTime(date.getTime() + 1200000)
         // console.log('consent: ', typeof consent)
         if (consent === 'true') {
-            setCookie('name', 'test', {
+            setCookie('name', 'Brincess Cake', {
                 expires: date,
                 path: '/',
                 sameSite: true
             })
-
-            console.log('consent i if-stats: ', consent)
             localStorage?.setItem('authorId', crypto.randomUUID())
             localStorage?.setItem('consent', true)
         }
