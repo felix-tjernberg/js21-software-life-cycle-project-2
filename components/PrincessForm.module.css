@@ -1,10 +1,16 @@
-.test {
+.princess-form{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form-container {
   background-color: #EDEDED;
   color: black;
   display: flex;
   flex-direction: column;
   border-radius: 16px;
-  width: 300px;
   height: 50%;
   align-items: center;
   justify-content: space-around;
@@ -51,7 +57,17 @@
 .name-input{
   border-radius: 100px;
   border: none;
+  width: 75%;
   padding-left: 8px;
   background-color: #CECECE;
   color: black;
+}
+
+.select{
+  background-color:#CECECE ;
+  color: black;
+  border: none;
+  border-radius: 16px;
+  width: 75%;
+  height: 24px;
 }
