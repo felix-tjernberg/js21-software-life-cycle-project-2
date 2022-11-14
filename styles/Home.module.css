@@ -8,16 +8,15 @@
     align-items: center;
     justify-content: center;
     margin: auto;
+    min-height: 100vh;
     width: 100%;
 }
 .princesses-container {
     align-items: center;
-    /* background-color: darkblue; */
     display: flex;
     flex-direction: column;
     margin: auto;
-
-    min-height: 100vh;
+    max-width: 750px;
     width: 100%;
 }
 
@@ -53,11 +52,9 @@
 
     .princesses-container {
         align-items: flex-start;
-        /* background-color: darkblue; */
         flex-direction: row;
         flex-wrap: wrap;
-        max-width: 750px;
-        min-height: 100vh;
-        padding-top: 24px;
+        height: 100%;
+        padding-top: 32px;
     }
 }
