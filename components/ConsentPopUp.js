@@ -19,7 +19,7 @@ function ConsentPopUp() {
         const date = new Date()
         // sets d = now + 20 min
         date.setTime(date.getTime() + 1200000)
-        console.log('consent: ', typeof consent)
+        // console.log('consent: ', typeof consent)
         if (consent === 'true') {
             setCookie('name', 'test', {
                 expires: date,

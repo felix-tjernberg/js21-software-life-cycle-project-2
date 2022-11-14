@@ -1,5 +1,5 @@
 import classes from '../styles/Home.module.css'
-import Princess from './Princess'
+import Princesses from './Princesses'
 import PrincessForm from '../components/PrincessForm'
 import '../public/bp-logo.png'
 
@@ -207,7 +207,7 @@ async function Home() {
             <section className={classes.main}>
                 <div className={classes['princesses-container']}>
                     {brincesses.map((princess, index) => {
-                        return <Princess key={index} princess={princess} />
+                        return <Princesses key={index} princess={princess} />
                     })}
                 </div>
             </section>
