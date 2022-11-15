@@ -1,7 +1,8 @@
 'use client'
 import { Formik } from 'formik'
 import classes from './PrincessForm.module.css'
-function PrincessForm() {
+
+function PrincessForm({ id, query }) {
     typeof window === 'undefined'
     const authorId = localStorage.getItem('authorId')
         ? localStorage.getItem('authorId')
@@ -35,11 +36,10 @@ function PrincessForm() {
                             },
                             method: 'POST',
                             body: JSON.stringify({
-                                query: `mutation AddBrincess($brincess: BrincessInput!) {
-                                    addBrincess(brincessInput: $brincess) {name}
-                                }`,
+                                query: query,
                                 variables: {
                                     brincess: {
+                                        id,
                                         authorId: authorId,
                                         name: values.name,
                                         backgroundColor: {

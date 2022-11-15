@@ -1,11 +1,14 @@
 'use client'
-
 import Princesses from '../../Princesses'
 import Link from 'next/link'
 import PrincessForm from '../../../components/PrincessForm'
 import { useState, useEffect } from 'react'
+import {
+    EDIT_BRINCESS_QUERY,
+    GET_BRINCESS_DATA_QUERY
+} from '../../../utilities/graphqlQuerys'
 
-function PrincessName(p) {
+function PrincessName({ params: { uuid } }) {
     const [brincess, setBrincess] = useState(null)
     const [isAuthor, setIsAuthor] = useState(false)
     const authorId = localStorage.getItem('authorId')
@@ -24,12 +27,9 @@ function PrincessName(p) {
                     },
                     method: 'POST',
                     body: JSON.stringify({
-                        query: `query BrincessData($id: ID!, $authorId: ID!) {
-                                brincess(id: $id) {id, backgroundColor {string}, hair {style, color {string}}, name, mouth {up {string}, down {string}}, eyes {left {string}, right {string}}}
-                                authorOfBrincess(id: $id, authorId: $authorId)
-                                }`,
+                        query: GET_BRINCESS_DATA_QUERY,
                         variables: {
-                            id: p.params.uuid,
+                            id: uuid,
                             authorId: authorId
                         }
                     })
@@ -40,11 +40,11 @@ function PrincessName(p) {
             setIsAuthor(json.data.authorOfBrincess)
         }
         fetchData()
-    }, [])
+    }, []) // TODO do we need to add dependencies here?
 
     return (
         <section className="edit-container">
-            {isAuthor && <PrincessForm />}
+            {isAuthor && <PrincessForm id={uuid} query={EDIT_BRINCESS_QUERY} />}
             <section className="princess-section">
                 <section className="main">
                     <div className="princesses-container">
