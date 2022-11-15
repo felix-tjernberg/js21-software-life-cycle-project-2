@@ -2,6 +2,10 @@ import classes from '../styles/Home.module.css'
 import Princesses from './Princesses'
 import PrincessForm from '../components/PrincessForm'
 import '../public/bp-logo.png'
+import {
+    ADD_BRINCESS_QUERY,
+    GET_ALL_BRINCESSES_QUERY
+} from '../utilities/graphqlQuerys'
 
 async function Home() {
     const graphqlresponse = await fetch(
@@ -14,16 +18,7 @@ async function Home() {
             },
             method: 'POST',
             body: JSON.stringify({
-                query: `{
-                    brincesses {
-                        id,
-                        name,
-                        backgroundColor {string, imgSrc},
-                        hair {style, color {string imgSrc} }
-                        eyes {right {string imgSrc} left {string imgSrc} }
-                        mouth {up {string imgSrc} down {string imgSrc} }
-                    }
-                }`
+                query: GET_ALL_BRINCESSES_QUERY
             })
         }
     )
@@ -38,7 +33,7 @@ async function Home() {
                     src={'bp-logo.png'}
                     alt="brincess-puldlling-logo"
                 />
-                <PrincessForm />
+                <PrincessForm query={ADD_BRINCESS_QUERY} />
             </aside>
             <section className={classes.main}>
                 <div className={classes['princesses-container']}>
