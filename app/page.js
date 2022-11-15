@@ -4,26 +4,12 @@ import PrincessForm from '../components/PrincessForm'
 import '../public/bp-logo.png'
 import {
     ADD_BRINCESS_QUERY,
-    GET_ALL_BRINCESSES_QUERY
-} from '../utilities/graphqlQuerys'
+    GET_ALL_BRINCESSES_QUERY,
+    graphqlRequest
+} from '../utilities/graphql'
 
 async function Home() {
-    const graphqlresponse = await fetch(
-        // 'https://graphqllearning1.azurewebsites.net',
-        'http://localhost:4000/',
-        {
-            headers: {
-                'Content-Type': 'application/json',
-                Accept: 'application/json'
-            },
-            method: 'POST',
-            body: JSON.stringify({
-                query: GET_ALL_BRINCESSES_QUERY
-            })
-        }
-    )
-    const json = await graphqlresponse.json()
-    const brincesses = json.data.brincesses
+    const { brincesses } = await graphqlRequest(GET_ALL_BRINCESSES_QUERY)
 
     return (
         <section className={classes.container}>

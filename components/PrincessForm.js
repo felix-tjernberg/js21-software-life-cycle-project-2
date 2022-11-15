@@ -1,6 +1,7 @@
 'use client'
 import { Formik } from 'formik'
 import classes from './PrincessForm.module.css'
+import { graphqlRequest } from '../utilities/graphql'
 
 function PrincessForm({ id, query }) {
     typeof window === 'undefined'
@@ -26,71 +27,47 @@ function PrincessForm({ id, query }) {
                     setSubmitting(false)
                 }, 1000)
                 try {
-                    const graphqlresponse = await fetch(
-                        // 'https://graphqllearning1.azurewebsites.net',
-                        'http://localhost:4000/',
-                        {
-                            headers: {
-                                'Content-Type': 'application/json',
-                                Accept: 'application/json'
+                    // TODO update brincess on page or navigate after below statement
+                    const { brincess } = await graphqlRequest(query, {
+                        brincess: {
+                            id,
+                            authorId: authorId,
+                            name: values.name,
+                            backgroundColor: {
+                                string: values.backgroundColor,
+                                imgSrc: null
                             },
-                            method: 'POST',
-                            body: JSON.stringify({
-                                query: query,
-                                variables: {
-                                    brincess: {
-                                        id,
-                                        authorId: authorId,
-                                        name: values.name,
-                                        backgroundColor: {
-                                            string: values.backgroundColor,
-                                            imgSrc: null
-                                        },
-                                        hair: {
-                                            style: values.hairStyle,
-                                            color: {
-                                                string: values.hair,
-                                                imgSrc: null
-                                            }
-                                        },
-                                        eyes: {
-                                            right: {
-                                                string: values.eyesRight,
-                                                imgSrc: null
-                                            },
-                                            left: {
-                                                string: values.eyes,
-                                                imgSrc: null
-                                            }
-                                        },
-                                        mouth: {
-                                            up: {
-                                                string: values.mouth,
-                                                imgSrc: null
-                                            },
-                                            down: {
-                                                string: values.mouthDown,
-                                                imgSrc: null
-                                            }
-                                        }
-                                    }
+                            hair: {
+                                style: values.hairStyle,
+                                color: {
+                                    string: values.hair,
+                                    imgSrc: null
                                 }
-                            })
+                            },
+                            eyes: {
+                                right: {
+                                    string: values.eyesRight,
+                                    imgSrc: null
+                                },
+                                left: {
+                                    string: values.eyes,
+                                    imgSrc: null
+                                }
+                            },
+                            mouth: {
+                                up: {
+                                    string: values.mouth,
+                                    imgSrc: null
+                                },
+                                down: {
+                                    string: values.mouthDown,
+                                    imgSrc: null
+                                }
+                            }
                         }
-                    )
-                        .then((response) => {
-                            return response.json()
-                        })
-                        .then((data) => {
-                            console.log(data)
-                        })
-                    const json = await graphqlresponse.json()
-                    console.log(json[0].backgroundColor.string)
-                    console.log(json.data.brincesses[0])
-                    res.status(200).json(json)
-                    console.log(values.backgroundColor)
+                    })
                 } catch (error) {
-                    // console.log(error)
+                    //TODO Catch this
                 }
             }}
             validate={(values) => {
