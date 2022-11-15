@@ -64,7 +64,7 @@ function ConsentPopUp() {
                                 onClick={clickHandler}
                                 className={classes['consent-btn']}
                                 value={false}>
-                                Refuse all cakes
+                                Reject all cakes
                             </button>
                         </div>
                     </div>
