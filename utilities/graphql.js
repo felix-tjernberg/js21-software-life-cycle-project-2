@@ -31,3 +31,22 @@ export const GET_ALL_BRINCESSES_QUERY = `{
       mouth {up {string imgSrc} down {string imgSrc} }
   }
 }`
+
+export async function graphqlRequest(query, variables) {
+    const graphqlResponse = await fetch(
+        process.env.NEXT_PUBLIC_GRAPHQL_ADRESS,
+        {
+            headers: {
+                'Content-Type': 'application/json',
+                Accept: 'application/json'
+            },
+            method: 'POST',
+            body: JSON.stringify({
+                query: query,
+                variables: variables
+            })
+        }
+    )
+    const json = await graphqlResponse.json()
+    return json.data
+}

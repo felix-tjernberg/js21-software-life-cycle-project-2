@@ -5,8 +5,9 @@ import PrincessForm from '../../../components/PrincessForm'
 import { useState, useEffect } from 'react'
 import {
     EDIT_BRINCESS_QUERY,
-    GET_BRINCESS_DATA_QUERY
-} from '../../../utilities/graphqlQuerys'
+    GET_BRINCESS_DATA_QUERY,
+    graphqlRequest
+} from '../../../utilities/graphql'
 
 function PrincessName({ params: { uuid } }) {
     const [brincess, setBrincess] = useState(null)
@@ -17,27 +18,12 @@ function PrincessName({ params: { uuid } }) {
 
     useEffect(() => {
         async function fetchData() {
-            const graphqlResponse = await fetch(
-                // 'https://graphqllearning1.azurewebsites.net',
-                'http://localhost:4000/',
-                {
-                    headers: {
-                        'Content-Type': 'application/json',
-                        Accept: 'application/json'
-                    },
-                    method: 'POST',
-                    body: JSON.stringify({
-                        query: GET_BRINCESS_DATA_QUERY,
-                        variables: {
-                            id: uuid,
-                            authorId: authorId
-                        }
-                    })
-                }
+            const { brincess, authorOfBrincess } = await graphqlRequest(
+                GET_BRINCESS_DATA_QUERY,
+                { id: uuid, authorId }
             )
-            const json = await graphqlResponse.json()
-            setBrincess(json.data.brincess)
-            setIsAuthor(json.data.authorOfBrincess)
+            setBrincess(brincess)
+            setIsAuthor(authorOfBrincess)
         }
         fetchData()
     }, []) // TODO do we need to add dependencies here?
