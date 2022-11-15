@@ -1,4 +1,4 @@
-// 'use client'
+'use client'
 
 import classes from '../../styles/Princess.module.css'
 import Princesses from '../Princesses'

@@ -7,7 +7,6 @@ function PrincessForm() {
     const [auth, setAuth] = useState('')
     useEffect(() => {
         setAuth(localStorage.getItem('authorId'))
-        console.log(auth)
     }, [auth])
     useEffect(() => {}, [auth])
     return (
