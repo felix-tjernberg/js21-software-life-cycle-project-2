@@ -1,6 +1,5 @@
 import '../styles/globals.css'
 import '../components/ConsentPopUp.module.css'
-import PrincessForm from '../components/PrincessForm'
 import '../components/PrincessForm.module.css'
 import '../styles/Princess.module.css'
 import ConsentPopUp from '../components/ConsentPopUp'
@@ -29,9 +28,7 @@ export default function RootLayout({ children }) {
             </head>
             <CookiesProvider>
                 <body>
-                    <header></header>
                     <main>{children}</main>
-
                     <ConsentPopUp />
                 </body>
             </CookiesProvider>
