@@ -1,8 +1,15 @@
 'use client'
 import { Formik } from 'formik'
 import classes from './PrincessForm.module.css'
+import { useState, useEffect } from 'react'
 
 function PrincessForm() {
+    const [auth, setAuth] = useState('')
+    useEffect(() => {
+        setAuth(localStorage.getItem('authorId'))
+        console.log(auth)
+    }, [auth])
+    useEffect(() => {}, [auth])
     return (
         <Formik
             className={classes.test}
@@ -14,7 +21,8 @@ function PrincessForm() {
                 eyesRight: '#fcff82',
                 eyes: '#fcff82',
                 mouth: '#afc5ff',
-                mouthDown: '#afc5ff'
+                mouthDown: '#afc5ff',
+                auth: auth
             }}
             onSubmit={async (values, { setSubmitting }) => {
                 setTimeout(() => {
@@ -36,8 +44,7 @@ function PrincessForm() {
                                   }`,
                                 variables: {
                                     brincess: {
-                                        authorId:
-                                            '734147a3-9876-4f26-9ddd-b394ef93e732',
+                                        authorId: values.auth,
                                         name: values.name,
                                         backgroundColor: {
                                             string: values.backgroundColor,
@@ -95,6 +102,10 @@ function PrincessForm() {
 
                 if (values.name.length > 10) {
                     errors.name = 'Name must contain maximux of 10 letters'
+                }
+
+                if (values.auth == '') {
+                    errors.auth = 'no cake, no brincess'
                 }
 
                 return errors
@@ -194,6 +205,7 @@ function PrincessForm() {
                             value="Add Brincess"
                             type="submit"
                         />
+                        <label>{errors.auth}</label>
                     </form>
                     <div className={classes['princess-container']}>
                         <svg
