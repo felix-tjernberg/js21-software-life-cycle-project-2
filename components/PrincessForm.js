@@ -1,8 +1,6 @@
 'use client'
 import { Formik } from 'formik'
 import classes from './PrincessForm.module.css'
-import { useState, useEffect } from 'react'
-
 function PrincessForm() {
     typeof window === 'undefined'
     const auth =

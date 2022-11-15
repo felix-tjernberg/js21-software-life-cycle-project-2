@@ -33,164 +33,46 @@ async function Home() {
 
     const brincesses = [
         {
-            name: 'Askungen',
-            backgroundColor: {
-                string: '#cdb4db',
-                imgSrc: 'https://i.imgur.com/0F0.png'
+            name: 'Brincess 1',
+            eyes: { right: { string: '#0F0' }, left: { string: '#000' } },
+            mouth: { up: { string: '#4F0' }, down: { string: '#500' } },
+            hair: { color: { string: '#6F0' }, style: 'long' },
+            backgroundColor: { string: '#7F0' },
+            creationTimeStamp: Date.now(),
+            authorId: '734147a3-9876-4f26-9ddd-b394ef93e732',
+            id: '06986b57-5ebb-4647-8702-62b12b7759a1',
+            spells: {
+                first: {
+                    name: 'Flash',
+                    description: 'Distract your enemy with your curves'
+                },
+                second: {
+                    name: 'Bite',
+                    description: 'You set your teeth in your enemy'
+                }
             },
-            hair: { style: 'long', color: { string: '#a2754f', imgSrc: null } },
-            eyes: {
-                right: { string: '#fff', imgSrc: null },
-                left: { string: '#fff', imgSrc: null }
-            },
-            mouth: {
-                up: { string: '#4F0', imgSrc: null },
-                down: { string: '#500', imgSrc: null }
-            }
+            health: 1337
         },
         {
-            name: 'Törnrosa',
-            backgroundColor: { string: '#bde0fe', imgSrc: null },
-            hair: {
-                style: 'long',
-                color: { string: '#c9922d', imgSrc: null }
+            name: 'Brincess 2',
+            eyes: { right: { string: '#0F0' }, left: { string: '#000' } },
+            mouth: { up: { string: '#1F0' }, down: { string: '#100' } },
+            hair: { color: { string: '#2F0' }, style: 'short' },
+            backgroundColor: { string: '#3F0' },
+            creationTimeStamp: Date.now(),
+            authorId: '734147a3-9876-4f26-9ddd-b394ef93e732',
+            id: '6375393e-a746-4045-ba42-d32a5cc23ba3',
+            spells: {
+                first: {
+                    name: 'Flash',
+                    description: 'Distract your enemy with your curves'
+                },
+                second: {
+                    name: 'Bite',
+                    description: 'You set your teeth in your enemy'
+                }
             },
-            eyes: {
-                right: { string: '#fff', imgSrc: null },
-                left: { string: '#fff', imgSrc: null }
-            },
-            mouth: {
-                up: { string: '#1F0', imgSrc: null },
-                down: { string: '#100', imgSrc: null }
-            }
-        },
-        {
-            name: 'Snövit',
-            backgroundColor: { string: '#ffc8dd', imgSrc: null },
-            hair: {
-                style: 'long',
-                color: { string: '#030301', imgSrc: null }
-            },
-            eyes: {
-                right: { string: '#fff', imgSrc: null },
-                left: { string: '#fff', imgSrc: null }
-            },
-            mouth: {
-                up: { string: '#1F0', imgSrc: null },
-                down: { string: '#100', imgSrc: null }
-            }
-        },
-        {
-            name: 'Rapunzel',
-            backgroundColor: { string: '#a2d2ff', imgSrc: null },
-            hair: {
-                style: 'long',
-                color: { string: '#d19d64', imgSrc: null }
-            },
-            eyes: {
-                right: { string: '#fff', imgSrc: null },
-                left: { string: '#fff', imgSrc: null }
-            },
-            mouth: {
-                up: { string: '#1F0', imgSrc: null },
-                down: { string: '#100', imgSrc: null }
-            }
-        },
-        {
-            name: 'Elsa',
-            backgroundColor: { string: '#ffafcc', imgSrc: null },
-            hair: {
-                style: 'long',
-                color: { string: '#d0beab', imgSrc: null }
-            },
-            eyes: {
-                right: { string: '#fff', imgSrc: null },
-                left: { string: '#fff', imgSrc: null }
-            },
-            mouth: {
-                up: { string: '#1F0', imgSrc: null },
-                down: { string: '#100', imgSrc: null }
-            }
-        },
-        {
-            name: 'Askungen',
-            backgroundColor: {
-                string: '#cdb4db',
-                imgSrc: 'https://i.imgur.com/0F0.png'
-            },
-            hair: { style: 'long', color: { string: '#a2754f', imgSrc: null } },
-            eyes: {
-                right: { string: '#fff', imgSrc: null },
-                left: { string: '#fff', imgSrc: null }
-            },
-            mouth: {
-                up: { string: '#4F0', imgSrc: null },
-                down: { string: '#500', imgSrc: null }
-            }
-        },
-        {
-            name: 'Törnrosa',
-            backgroundColor: { string: '#bde0fe', imgSrc: null },
-            hair: {
-                style: 'long',
-                color: { string: '#c9922d', imgSrc: null }
-            },
-            eyes: {
-                right: { string: '#fff', imgSrc: null },
-                left: { string: '#fff', imgSrc: null }
-            },
-            mouth: {
-                up: { string: '#1F0', imgSrc: null },
-                down: { string: '#100', imgSrc: null }
-            }
-        },
-        {
-            name: 'Snövit',
-            backgroundColor: { string: '#ffc8dd', imgSrc: null },
-            hair: {
-                style: 'long',
-                color: { string: '#030301', imgSrc: null }
-            },
-            eyes: {
-                right: { string: '#fff', imgSrc: null },
-                left: { string: '#fff', imgSrc: null }
-            },
-            mouth: {
-                up: { string: '#1F0', imgSrc: null },
-                down: { string: '#100', imgSrc: null }
-            }
-        },
-        {
-            name: 'Rapunzel',
-            backgroundColor: { string: '#a2d2ff', imgSrc: null },
-            hair: {
-                style: 'long',
-                color: { string: '#d19d64', imgSrc: null }
-            },
-            eyes: {
-                right: { string: '#fff', imgSrc: null },
-                left: { string: '#fff', imgSrc: null }
-            },
-            mouth: {
-                up: { string: '#1F0', imgSrc: null },
-                down: { string: '#100', imgSrc: null }
-            }
-        },
-        {
-            name: 'Elsa',
-            backgroundColor: { string: '#ffafcc', imgSrc: null },
-            hair: {
-                style: 'long',
-                color: { string: '#d0beab', imgSrc: null }
-            },
-            eyes: {
-                right: { string: '#fff', imgSrc: null },
-                left: { string: '#fff', imgSrc: null }
-            },
-            mouth: {
-                up: { string: '#1F0', imgSrc: null },
-                down: { string: '#100', imgSrc: null }
-            }
+            health: 1337
         }
     ]
 
