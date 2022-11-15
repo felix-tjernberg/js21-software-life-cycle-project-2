@@ -4,11 +4,10 @@ import classes from './PrincessForm.module.css'
 import { useState, useEffect } from 'react'
 
 function PrincessForm() {
-    const [auth, setAuth] = useState('')
-    useEffect(() => {
-        setAuth(localStorage.getItem('authorId'))
-    }, [auth])
-    useEffect(() => {}, [auth])
+    typeof window === 'undefined'
+    const auth =
+        typeof windows === 'undefined' ? localStorage.getItem('authorId') : ''
+    console.log(auth)
     return (
         <Formik
             className={classes.test}
@@ -20,8 +19,7 @@ function PrincessForm() {
                 eyesRight: '#fcff82',
                 eyes: '#fcff82',
                 mouth: '#afc5ff',
-                mouthDown: '#afc5ff',
-                auth: auth
+                mouthDown: '#afc5ff'
             }}
             onSubmit={async (values, { setSubmitting }) => {
                 setTimeout(() => {
@@ -39,11 +37,12 @@ function PrincessForm() {
                             method: 'POST',
                             body: JSON.stringify({
                                 query: `mutation AddBrincess($brincess: BrincessInput!) {
-                                    addBrincess(brincess: $brincess) {name}
+                                    addBrincess(brincessInput: $brincess) {name}
                                   }`,
                                 variables: {
                                     brincess: {
-                                        authorId: values.auth,
+                                        // id:,
+                                        authorId: auth,
                                         name: values.name,
                                         backgroundColor: {
                                             string: values.backgroundColor,
@@ -101,10 +100,6 @@ function PrincessForm() {
 
                 if (values.name.length > 10) {
                     errors.name = 'Name must contain maximux of 10 letters'
-                }
-
-                if (values.auth == '') {
-                    errors.auth = 'no cake, no brincess'
                 }
 
                 return errors
@@ -204,7 +199,6 @@ function PrincessForm() {
                             value="Add Brincess"
                             type="submit"
                         />
-                        <label>{errors.auth}</label>
                     </form>
                     <div className={classes['princess-container']}>
                         <svg
