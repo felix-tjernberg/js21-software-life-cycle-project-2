@@ -3,9 +3,10 @@ import { Formik } from 'formik'
 import classes from './PrincessForm.module.css'
 function PrincessForm() {
     typeof window === 'undefined'
-    const auth =
-        typeof windows === 'undefined' ? localStorage.getItem('authorId') : ''
-    console.log(auth)
+    const authorId = localStorage.getItem('authorId')
+        ? localStorage.getItem('authorId')
+        : null
+
     return (
         <Formik
             className={classes.test}
@@ -36,11 +37,10 @@ function PrincessForm() {
                             body: JSON.stringify({
                                 query: `mutation AddBrincess($brincess: BrincessInput!) {
                                     addBrincess(brincessInput: $brincess) {name}
-                                  }`,
+                                }`,
                                 variables: {
                                     brincess: {
-                                        // id:,
-                                        authorId: auth,
+                                        authorId: authorId,
                                         name: values.name,
                                         backgroundColor: {
                                             string: values.backgroundColor,

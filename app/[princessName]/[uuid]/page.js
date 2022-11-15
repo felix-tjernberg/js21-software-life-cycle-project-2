@@ -7,6 +7,11 @@ import { useState, useEffect } from 'react'
 
 function PrincessName(p) {
     const [brincess, setBrincess] = useState(null)
+    const [isAuthor, setIsAuthor] = useState(false)
+    const authorId = localStorage.getItem('authorId')
+        ? localStorage.getItem('authorId')
+        : null
+
     useEffect(() => {
         async function fetchData() {
             const graphqlResponse = await fetch(
@@ -19,29 +24,28 @@ function PrincessName(p) {
                     },
                     method: 'POST',
                     body: JSON.stringify({
-                        query: `query Brincess($id: ID!) {
+                        query: `query BrincessData($id: ID!, $authorId: ID!) {
                                 brincess(id: $id) {id, backgroundColor {string}, hair {style, color {string}}, name, mouth {up {string}, down {string}}, eyes {left {string}, right {string}}}
+                                authorOfBrincess(id: $id, authorId: $authorId)
                                 }`,
                         variables: {
-                            id: p.params.uuid
+                            id: p.params.uuid,
+                            authorId: authorId
                         }
                     })
                 }
             )
             const json = await graphqlResponse.json()
             setBrincess(json.data.brincess)
+            setIsAuthor(json.data.authorOfBrincess)
         }
         fetchData()
-    }, [p.params.uuid])
+    }, [])
 
     return (
         <section className="edit-container">
-            <PrincessForm />
+            {isAuthor && <PrincessForm />}
             <section className="princess-section">
-                <h1>
-                    (param → ) {p.params.princessName} (brincess → ){' '}
-                    {brincess?.name}
-                </h1>
                 <section className="main">
                     <div className="princesses-container">
                         {brincess && <Princesses princess={brincess} />}
