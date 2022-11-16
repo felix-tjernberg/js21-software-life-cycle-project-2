@@ -1,6 +1,7 @@
 .princess-card {
     background-color: var(--main7);
     border: 10px solid;
+    min-height: 300px;
     border-image-source: linear-gradient(
         145deg,
         #bf952f,
