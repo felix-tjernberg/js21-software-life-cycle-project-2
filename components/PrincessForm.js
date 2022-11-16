@@ -85,9 +85,10 @@ function PrincessForm({ id, query }) {
             validate={(values) => {
                 const errors = {}
 
-                if (values.name.length > 10) {
+                if (values.name.length > 10)
                     errors.name = 'Name must contain maximux of 10 letters'
-                }
+                if (values.name.length === 0)
+                    errors.name = 'Name must contain at least 1 letter'
 
                 return errors
             }}>
