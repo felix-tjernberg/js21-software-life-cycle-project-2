@@ -32,7 +32,11 @@ function PrincessName({ params: { uuid } }) {
         <div className="container">
             <section className="side-bar">
                 {isAuthor && (
-                    <PrincessForm id={uuid} query={EDIT_BRINCESS_QUERY} />
+                    <PrincessForm
+                        editing={true}
+                        id={uuid}
+                        query={EDIT_BRINCESS_QUERY}
+                    />
                 )}
                 <Link href={'/'}>Go back</Link>
             </section>

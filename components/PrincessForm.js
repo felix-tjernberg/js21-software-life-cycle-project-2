@@ -3,7 +3,7 @@ import { Formik } from 'formik'
 import classes from './PrincessForm.module.css'
 import { graphqlRequest } from '../utilities/graphql'
 
-function PrincessForm({ id, query }) {
+function PrincessForm({ id, query, editing }) {
     typeof window === 'undefined'
     const authorId = localStorage.getItem('authorId')
         ? localStorage.getItem('authorId')
@@ -26,13 +26,9 @@ function PrincessForm({ id, query }) {
                 bodyType: 'fat',
                 pupils: '#000'
             }}
-            onSubmit={async (values, { setSubmitting }) => {
-                setTimeout(() => {
-                    setSubmitting(false)
-                }, 1000)
+            onSubmit={async (values) => {
                 try {
-                    // TODO update brincess on page or navigate after below statement
-                    const { brincess } = await graphqlRequest(query, {
+                    await graphqlRequest(query, {
                         brincess: {
                             id,
                             authorId: authorId,
@@ -78,6 +74,7 @@ function PrincessForm({ id, query }) {
                             }
                         }
                     })
+                    window.location.reload()
                 } catch (error) {
                     //TODO Catch this
                 }
@@ -88,7 +85,7 @@ function PrincessForm({ id, query }) {
                 if (values.name.length > 10)
                     errors.name = 'Name must contain maximux of 10 letters'
                 if (values.name.length === 0)
-                    errors.name = 'Name must contain at least 1 letter'
+                    errors.name = 'Name must contain minimus 1 letter'
 
                 return errors
             }}>
@@ -184,7 +181,7 @@ function PrincessForm({ id, query }) {
                         <input
                             className={classes['add-button']}
                             disabled={isSubmitting}
-                            value="Add Brincess"
+                            value={`${editing ? 'Edit' : 'Add'} Brincess`}
                             type="submit"
                         />
                     </form>
