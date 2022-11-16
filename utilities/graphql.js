@@ -27,6 +27,7 @@ export const GET_ALL_BRINCESSES_QUERY = `{
       hair {style, color {string imgSrc} }
       eyes {right {string imgSrc} left {string imgSrc} }
       mouth {up {string imgSrc} down {string imgSrc} }
+      spells {first {name, description} second {name, description} }
   }
 }`
 

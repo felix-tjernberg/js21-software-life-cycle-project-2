@@ -2,7 +2,7 @@ import Link from 'next/link'
 import classes from '../styles/Princesses.module.css'
 
 function Princess({ princess }) {
-    const { name, backgroundColor, hair, eyes, id } = princess
+    const { name, backgroundColor, hair, eyes, id, spells } = princess
     return (
         <div className={classes['princess-card']}>
             <Link href={`/${name}/${id}`}>
@@ -111,12 +111,12 @@ function Princess({ princess }) {
                 </svg>
                 <div className={classes['card-text']}>
                     <p>
-                        <span>Lorem</span> Lorem ipsum dolor, sit amet
-                        consectetur adipisicing elit. Quia, inventore?
+                        <span>{spells.first.name}</span>
+                        {spells.first.description}
                     </p>
                     <p>
-                        <span>Lorem</span> Lorem ipsum dolor, sit amet
-                        consectetur adipisicing elit. Quia, inventore?
+                        <span>{spells.second.name}</span>
+                        {spells.second.description}
                     </p>
                 </div>
             </Link>
