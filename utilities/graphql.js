@@ -14,7 +14,9 @@ export const GET_BRINCESS_DATA_QUERY = `query BrincessData($id: ID!, $authorId: 
       name, 
       mouth {up {string}, down {string}},
       eyes {left {string}, right {string}, pupils {string}},
-      spells {first {name, description}, second {name, description}}
+      spells {first {name, description}, second {name, description}},
+      body {head {string}, torso {string}, type},
+      health
     }
   authorOfBrincess(id: $id, authorId: $authorId)
 }`
@@ -23,11 +25,13 @@ export const GET_ALL_BRINCESSES_QUERY = `{
   brincesses {
       id,
       name,
-      backgroundColor {string, imgSrc},
-      hair {style, color {string imgSrc} }
-      eyes {right {string imgSrc} left {string imgSrc} }
-      mouth {up {string imgSrc} down {string imgSrc} }
+      backgroundColor {string },
+      hair {style, color {string} }
+      eyes {right {string} left {string} pupils {string} }
+      mouth {up {string} down {string} }
       spells {first {name, description} second {name, description} }
+      body {head {string}, torso {string}, type},
+      health
   }
 }`
 

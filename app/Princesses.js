@@ -2,13 +2,23 @@ import Link from 'next/link'
 import classes from '../styles/Princesses.module.css'
 
 function Princess({ princess }) {
-    const { name, backgroundColor, hair, eyes, id, spells } = princess
+    const {
+        name,
+        backgroundColor,
+        hair,
+        eyes,
+        id,
+        spells,
+        body,
+        mouth,
+        health
+    } = princess
     return (
         <div className={classes['princess-card']}>
             <Link href={`/${name}/${id}`}>
                 <div className={classes['header']}>
                     <h1>{name}</h1>
-                    <h1>110 HP</h1>
+                    <h1>{health} HP</h1>
                 </div>
                 <svg
                     className={classes['card-icon']}
@@ -30,35 +40,40 @@ function Princess({ princess }) {
                             stroke="black"
                         />
                     )}
-                    <ellipse cx="73" cy="55" rx="25" ry="30" fill="#53D8F5" />
+                    <ellipse
+                        cx="73"
+                        cy="55"
+                        rx="25"
+                        ry="30"
+                        //head
+                        fill={body.head.string}
+                    />
                     <path
                         d="M72.4727 70.2176C72.4727 70.2176 81.159 73.5313 84.4727 70.2176C85.5628 69.1276 85.9357 67.889 85.9453 66.7176H59.0002C59.0098 67.889 59.3827 69.1276 60.4728 70.2176C63.7865 73.5313 72.4727 70.2176 72.4727 70.2176Z"
                         // lower lip
-                        fill="#C612E3"
-                        stroke="black"
+                        fill={mouth.down.string}
                     />
                     <path
                         d="M72.4728 64.7176C68.4728 58.2176 60.4728 62.2176 60.4728 62.2176C60.4728 62.2176 58.9806 64.3279 59.0002 66.7176H85.9453C85.965 64.3279 84.4728 62.2176 84.4728 62.2176C84.4728 62.2176 76.4728 58.2176 72.4728 64.7176Z"
                         // upper lip
-                        fill="#F41515"
-                        stroke="black"
+                        fill={mouth.up.string}
                     />
                     <circle cx="60" cy="44" r="6" fill={eyes.right.string} />
                     <circle cx="84" cy="44" r="6" fill={eyes.left.string} />
                     <path
                         d="M59 42.5C59 43.3284 58.3284 44 57.5 44C56.6716 44 56 43.3284 56 42.5C56 41.6716 56.6716 41 57.5 41C58.3284 41 59 41.6716 59 42.5Z"
                         // left pupil
-                        fill="black"
+                        fill={eyes.pupils.string}
                     />
                     <path
                         d="M88 42.5C88 43.3284 87.3284 44 86.5 44C85.6716 44 85 43.3284 85 42.5C85 41.6716 85.6716 41 86.5 41C87.3284 41 88 41.6716 88 42.5Z"
                         // right pupil
-                        fill="black"
+                        fill={eyes.pupils.string}
                     />
                     <path
                         d="M107 121C107 142.539 91.7777 138 73 138C54.2223 138 39 142.539 39 121C39 99.4609 54.2223 82 73 82C91.7777 82 107 99.4609 107 121Z"
                         // body
-                        fill="#701717"
+                        fill={body.torso.string}
                     />
                     {hair.style === 'long' ||
                         (hair.style === 'bangs' && (
