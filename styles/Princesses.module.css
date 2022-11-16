@@ -68,7 +68,7 @@
     padding: 2px;
 }
 
-@media (min-width: 1366px) {
+@media (min-width: 810px) {
     .princess-card {
         margin: 0 -72px 0 0;
     }

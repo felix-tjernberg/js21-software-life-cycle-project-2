@@ -1,7 +1,7 @@
 .container {
     min-height: 100vh;
     display: grid;
-    grid-template-columns: 25% 1fr;
+    grid-template-rows: auto;
 }
 
 .main {
@@ -38,9 +38,10 @@
     margin-bottom: 65px;
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 810px) {
     .container {
         flex-direction: row;
+        grid-template-columns: 25% 1fr;
     }
 
     .princesses-container {

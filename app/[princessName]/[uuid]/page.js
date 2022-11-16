@@ -29,17 +29,21 @@ function PrincessName({ params: { uuid } }) {
     }, []) // TODO do we need to add dependencies here?
 
     return (
-        <section className="edit-container">
-            {isAuthor && <PrincessForm id={uuid} query={EDIT_BRINCESS_QUERY} />}
+        <div className="container">
+            <section className="side-bar">
+                {isAuthor && (
+                    <PrincessForm id={uuid} query={EDIT_BRINCESS_QUERY} />
+                )}
+                <Link href={'/'}>Go back</Link>
+            </section>
             <section className="princess-section">
                 <section className="main">
                     <div className="princesses-container">
                         {brincess && <Princesses princess={brincess} />}
                     </div>
                 </section>
-                <Link href={'/'}>Go back</Link>
             </section>
-        </section>
+        </div>
     )
 }
 export default PrincessName

@@ -1,0 +1,33 @@
+.container {
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto;
+}
+.side-bar {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 32px;
+}
+.princess-section {
+    padding-top: 3em;
+    display: grid;
+    place-content: center;
+}
+
+@media (min-width: 810px) {
+    .container {
+        flex-direction: row;
+        grid-template-columns: 25% 1fr;
+    }
+
+    .princesses-container {
+        align-items: flex-start;
+        flex-direction: row;
+        flex-wrap: wrap;
+        height: 100%;
+        padding-top: 32px;
+        width: 100%;
+    }
+}

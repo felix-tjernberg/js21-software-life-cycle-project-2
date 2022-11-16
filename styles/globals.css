@@ -33,3 +33,5 @@ a {
     --main7: #3d143d;
     --dark-text: #0e0116;
 }
+
+@import url('./page-2.css');
