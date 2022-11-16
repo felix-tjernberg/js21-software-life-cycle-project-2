@@ -48,7 +48,7 @@
     transform: translateY(4px);
 }
 
-@media (min-width: 1366px) {
+@media (min-width: 1280px) {
     .modal {
         background-color: var(--main1);
         color: black;
