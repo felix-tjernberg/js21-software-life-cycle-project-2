@@ -1,32 +1,29 @@
 .container {
-    display: flex;
-    flex-direction: column;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 25% 1fr;
 }
 
 .main {
-    background-color: var(--main6);
-    align-items: center;
-    justify-content: center;
-    margin: auto;
-    min-height: 100vh;
     width: 100%;
+    display: grid;
+    place-content: center;
+    background-color: var(--main6);
 }
 .princesses-container {
     align-items: center;
     display: flex;
     flex-direction: column;
-    margin: auto;
     max-width: 750px;
-    width: 100%;
 }
 
 .sidebar {
     background-color: #ededed;
     min-height: 100vh;
-    width: 25%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
 }
 
 .bp-logo {
@@ -46,16 +43,12 @@
         flex-direction: row;
     }
 
-    .sidebar {
-        min-height: 100vh;
-        width: 25%;
-    }
-
     .princesses-container {
         align-items: flex-start;
         flex-direction: row;
         flex-wrap: wrap;
         height: 100%;
         padding-top: 32px;
+        width: 100%;
     }
 }
