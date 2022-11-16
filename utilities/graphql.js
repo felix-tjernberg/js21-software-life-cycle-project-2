@@ -12,12 +12,10 @@ export const GET_BRINCESS_DATA_QUERY = `query BrincessData($id: ID!, $authorId: 
       backgroundColor {string}, 
       hair {style, color {string}}, 
       name, 
-      mouth {up {string}, 
-      down {string}}, 
-      eyes {left {string}, 
-      right {string}
+      mouth {up {string}, down {string}},
+      eyes {left {string}, right {string}, pupils {string}},
+      spells {first {name, description}, second {name, description}}
     }
-  }
   authorOfBrincess(id: $id, authorId: $authorId)
 }`
 
