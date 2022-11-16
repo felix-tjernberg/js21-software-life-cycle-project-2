@@ -20,7 +20,11 @@ function PrincessForm({ id, query }) {
                 eyesRight: '#fcff82',
                 eyes: '#fcff82',
                 mouth: '#afc5ff',
-                mouthDown: '#afc5ff'
+                mouthDown: '#afc5ff',
+                torso: '#000',
+                head: '#000',
+                bodyType: 'fat',
+                pupils: '#000'
             }}
             onSubmit={async (values, { setSubmitting }) => {
                 setTimeout(() => {
@@ -52,6 +56,9 @@ function PrincessForm({ id, query }) {
                                 left: {
                                     string: values.eyes,
                                     imgSrc: null
+                                },
+                                pupils: {
+                                    string: values.pupils
                                 }
                             },
                             mouth: {
@@ -63,6 +70,11 @@ function PrincessForm({ id, query }) {
                                     string: values.mouthDown,
                                     imgSrc: null
                                 }
+                            },
+                            body: {
+                                head: { string: values.head },
+                                torso: { string: values.torso },
+                                type: values.bodyType
                             }
                         }
                     })
