@@ -21,13 +21,11 @@ function ConsentPopUp() {
         date.setTime(date.getTime() + 1200000)
         // console.log('consent: ', typeof consent)
         if (consent === 'true') {
-            setCookie('name', 'test', {
+            setCookie('name', 'Brincess Cake', {
                 expires: date,
                 path: '/',
                 sameSite: true
             })
-
-            console.log('consent i if-stats: ', consent)
             localStorage?.setItem('authorId', crypto.randomUUID())
             localStorage?.setItem('consent', true)
         }
@@ -55,20 +53,20 @@ function ConsentPopUp() {
                             cookies on your device and disclose information in
                             accordance with our Brincess Cake Policy.
                         </p>
-                        <button
-                            onClick={clickHandler}
-                            className={classes['consent-btn']}
-                            style={{ marginRight: '2px' }}
-                            value={true}>
-                            Accept all cakes
-                        </button>
-                        <button
-                            onClick={clickHandler}
-                            className={classes['consent-btn']}
-                            style={{ marginLeft: '2px' }}
-                            value={false}>
-                            Refuse all cakes
-                        </button>
+                        <div className={classes['btn-container']}>
+                            <button
+                                onClick={clickHandler}
+                                className={classes['consent-btn']}
+                                value={true}>
+                                Accept all cakes
+                            </button>
+                            <button
+                                onClick={clickHandler}
+                                className={classes['consent-btn']}
+                                value={false}>
+                                Reject all cakes
+                            </button>
+                        </div>
                     </div>
                 </aside>
             )}

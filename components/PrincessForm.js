@@ -1,8 +1,14 @@
 'use client'
 import { Formik } from 'formik'
 import classes from './PrincessForm.module.css'
+import { graphqlRequest } from '../utilities/graphql'
 
-function PrincessForm() {
+function PrincessForm({ id, query }) {
+    typeof window === 'undefined'
+    const authorId = localStorage.getItem('authorId')
+        ? localStorage.getItem('authorId')
+        : null
+
     return (
         <Formik
             className={classes.test}
@@ -14,80 +20,66 @@ function PrincessForm() {
                 eyesRight: '#fcff82',
                 eyes: '#fcff82',
                 mouth: '#afc5ff',
-                mouthDown: '#afc5ff'
+                mouthDown: '#afc5ff',
+                torso: '#000',
+                head: '#000',
+                bodyType: 'fat',
+                pupils: '#000'
             }}
             onSubmit={async (values, { setSubmitting }) => {
                 setTimeout(() => {
                     setSubmitting(false)
                 }, 1000)
                 try {
-                    const graphqlresponse = await fetch(
-                        // 'https://graphqllearning1.azurewebsites.net',
-                        'http://localhost:4000/',
-                        {
-                            headers: {
-                                'Content-Type': 'application/json',
-                                Accept: 'application/json'
+                    // TODO update brincess on page or navigate after below statement
+                    const { brincess } = await graphqlRequest(query, {
+                        brincess: {
+                            id,
+                            authorId: authorId,
+                            name: values.name,
+                            backgroundColor: {
+                                string: values.backgroundColor,
+                                imgSrc: null
                             },
-                            method: 'POST',
-                            body: JSON.stringify({
-                                query: `mutation AddBrincess($brincess: BrincessInput!) {
-                                    addBrincess(brincess: $brincess) {name}
-                                  }`,
-                                variables: {
-                                    brincess: {
-                                        authorId:
-                                            '734147a3-9876-4f26-9ddd-b394ef93e732',
-                                        name: values.name,
-                                        backgroundColor: {
-                                            string: values.backgroundColor,
-                                            imgSrc: null
-                                        },
-                                        hair: {
-                                            style: values.hairStyle,
-                                            color: {
-                                                string: values.hair,
-                                                imgSrc: null
-                                            }
-                                        },
-                                        eyes: {
-                                            right: {
-                                                string: values.eyesRight,
-                                                imgSrc: null
-                                            },
-                                            left: {
-                                                string: values.eyes,
-                                                imgSrc: null
-                                            }
-                                        },
-                                        mouth: {
-                                            up: {
-                                                string: values.mouth,
-                                                imgSrc: null
-                                            },
-                                            down: {
-                                                string: values.mouthDown,
-                                                imgSrc: null
-                                            }
-                                        }
-                                    }
+                            hair: {
+                                style: values.hairStyle,
+                                color: {
+                                    string: values.hair,
+                                    imgSrc: null
                                 }
-                            })
+                            },
+                            eyes: {
+                                right: {
+                                    string: values.eyesRight,
+                                    imgSrc: null
+                                },
+                                left: {
+                                    string: values.eyes,
+                                    imgSrc: null
+                                },
+                                pupils: {
+                                    string: values.pupils
+                                }
+                            },
+                            mouth: {
+                                up: {
+                                    string: values.mouth,
+                                    imgSrc: null
+                                },
+                                down: {
+                                    string: values.mouthDown,
+                                    imgSrc: null
+                                }
+                            },
+                            body: {
+                                head: { string: values.head },
+                                torso: { string: values.torso },
+                                type: values.bodyType
+                            }
                         }
-                    )
-                        .then((response) => {
-                            return response.json()
-                        })
-                        .then((data) => {
-                            console.log(data)
-                        })
-                    const json = await graphqlresponse.json()
-                    console.log(json[0].backgroundColor.string)
-                    console.log(json.data.brincesses[0])
-                    res.status(200).json(json)
-                    console.log(values.backgroundColor)
+                    })
                 } catch (error) {
-                    // console.log(error)
+                    //TODO Catch this
                 }
             }}
             validate={(values) => {

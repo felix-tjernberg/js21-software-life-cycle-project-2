@@ -2,10 +2,10 @@ import Link from 'next/link'
 import classes from '../styles/Princesses.module.css'
 
 function Princess({ princess }) {
-    const { name, backgroundColor, hair, eyes } = princess
+    const { name, backgroundColor, hair, eyes, id } = princess
     return (
         <div className={classes['princess-card']}>
-            <Link href={`/${name}`}>
+            <Link href={`/${name}/${id}`}>
                 <div className={classes['header']}>
                     <h1>{name}</h1>
                     <h1>110 HP</h1>
