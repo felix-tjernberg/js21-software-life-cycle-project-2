@@ -12,12 +12,10 @@ import {
 function PrincessName({ params: { uuid } }) {
     const [brincess, setBrincess] = useState(null)
     const [isAuthor, setIsAuthor] = useState(false)
-    const authorId = localStorage.getItem('authorId')
-        ? localStorage.getItem('authorId')
-        : null
 
     useEffect(() => {
         async function fetchData() {
+            const authorId = localStorage.getItem('authorId')
             const { brincess, authorOfBrincess } = await graphqlRequest(
                 GET_BRINCESS_DATA_QUERY,
                 { id: uuid, authorId }
