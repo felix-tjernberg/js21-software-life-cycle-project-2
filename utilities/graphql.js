@@ -37,7 +37,7 @@ export const GET_ALL_BRINCESSES_QUERY = `{
 
 export async function graphqlRequest(query, variables) {
     const graphqlResponse = await fetch(
-        process.env.NEXT_PUBLIC_GRAPHQL_ADRESS,
+        'https://graphqllearning1.azurewebsites.net',
         {
             headers: {
                 'Content-Type': 'application/json',
