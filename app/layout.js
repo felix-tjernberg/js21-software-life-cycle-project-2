@@ -3,7 +3,6 @@ import '../components/ConsentPopUp.module.css'
 import '../components/PrincessForm.module.css'
 import '../styles/Princess.module.css'
 import ConsentPopUp from '../components/ConsentPopUp'
-import CookiesProvider from './cookies'
 
 export default function RootLayout({ children }) {
     return (
@@ -26,12 +25,10 @@ export default function RootLayout({ children }) {
                 />
                 <link rel="icon" href="/favicon.ico" />
             </head>
-            <CookiesProvider>
-                <body>
-                    <main>{children}</main>
-                    <ConsentPopUp />
-                </body>
-            </CookiesProvider>
+            <body>
+                <main>{children}</main>
+                <ConsentPopUp />
+            </body>
         </html>
     )
 }

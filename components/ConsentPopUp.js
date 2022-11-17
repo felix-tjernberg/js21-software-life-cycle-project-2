@@ -20,7 +20,6 @@ function ConsentPopUp() {
         }
     }, [consent])
 
-    // used to avoid "ReferenceError: localStorage is not defined"
     useEffect(() => {
         setItem(localStorage.getItem('consent'))
     }, [])
