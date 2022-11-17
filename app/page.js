@@ -1,3 +1,4 @@
+'use client'
 import classes from '../styles/Home.module.css'
 import Princesses from './Princesses'
 import PrincessForm from '../components/PrincessForm'
@@ -7,9 +8,20 @@ import {
     GET_ALL_BRINCESSES_QUERY,
     graphqlRequest
 } from '../utilities/graphql'
+import { useState, useEffect } from 'react'
 
-async function Home() {
-    const { brincesses } = await graphqlRequest(GET_ALL_BRINCESSES_QUERY)
+function Home() {
+    const [brincesses, setBrincesses] = useState('')
+
+    useEffect(() => {
+        async function fetchData() {
+            const { brincesses } = await graphqlRequest(
+                GET_ALL_BRINCESSES_QUERY
+            )
+            setBrincesses(brincesses)
+        }
+        fetchData()
+    }, [])
 
     return (
         <section className={classes.container}>
@@ -23,9 +35,12 @@ async function Home() {
             </aside>
             <section className={classes.main}>
                 <div className={classes['princesses-container']}>
-                    {brincesses.map((princess, index) => {
-                        return <Princesses key={index} princess={princess} />
-                    })}
+                    {brincesses &&
+                        brincesses.map((princess, index) => {
+                            return (
+                                <Princesses key={index} princess={princess} />
+                            )
+                        })}
                 </div>
             </section>
         </section>
