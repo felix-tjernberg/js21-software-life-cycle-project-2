@@ -2,12 +2,14 @@
 import { Formik } from 'formik'
 import classes from './PrincessForm.module.css'
 import { graphqlRequest } from '../utilities/graphql'
+import { useState, useEffect } from 'react'
 
 function PrincessForm({ id, query, editing }) {
-    typeof window === 'undefined'
-    const authorId = localStorage.getItem('authorId')
-        ? localStorage.getItem('authorId')
-        : null
+    const [authorId, setAuthorId] = useState('')
+
+    useEffect(() => {
+        setAuthorId(localStorage.getItem('authorId'))
+    }, []) // Fuck next I don't like you at the moment why haf too use local storage in useEffect :'(
 
     return (
         <Formik
